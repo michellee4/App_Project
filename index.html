@@ -44,7 +44,7 @@
 
     <!--  page footer -->
     <div data-role="footer" data-theme='b'>
-      <h1>Copyright 2020</h1>
+      <h1>Copyright 2021</h1>
     </div>
   </div>
   <!-- End of  page ------------------------------------------------------------------>
@@ -65,11 +65,6 @@
           <li><a href="#ListPlants">List Plants</a></li>
         </ul>
       </div><!-- /navbar -->
-
-    </div>
-
-
-
 
     <!-- page content -->
   
@@ -120,7 +115,7 @@
     
     <!--   page footer -->
     <div data-role="footer" data-theme='b'>
-      <h1>Copyright 2020</h1>
+      <h1>Copyright 2021</h1>
     </div>
   </div>
   <!-- End of  page ------------------------------------------------------------------>
@@ -148,16 +143,24 @@
 
   
     <div data-role="content" data-theme='c'>
-      <h3>Here are a few recommendations based off of the most popular </h3>
-      <p>[Color]</p>
-      <p>[Maintenace Level]</p>
-      <p>[Size]</p>
-      <p>[Plant Family]</p>
-      <h3>in your plant list: </h3>
-      <p>[Plant A]: Info and purchase link</p>
-      <p>[Plant B]: Info and purchase link</p>
-      <p>[Plant C]: Info and purchase link</p>
-      <p>[Plant D]: Info and purchase link</p>
+      
+      <div class="ui-field-contain">
+        <label for="select-sorting"> Find new plants based on your most popular: </label>
+        <select name="select-level" id="select-level">
+          <option value="color">Color</option>
+          <option value="maintenance">Maintenance Level</option>
+          <option value="size">Size</option>
+          <option value="family">Family</option>
+        </select>
+      </div>
+  
+      <ul>
+        <li>[Plant A]: Info and purchase link</li>
+        <li>[Plant B]: Info and purchase link</li>
+        <li>[Plant C]: Info and purchase link</li>
+        <li>[Plant D]: Info and purchase link</li>
+      </ul>
+
 
       <h3>See a plant that you like? Select the plant and click the button below to add it to your list: </h3>
     
@@ -174,7 +177,7 @@
     
     <!--   page footer -->
     <div data-role="footer" data-theme='b'>
-      <h1>Copyright 2020</h1>
+      <h1>Copyright 2021</h1>
     </div>
   </div>
   <!-- End of  page ------------------------------------------------------------------>
@@ -198,19 +201,64 @@
     <!--   page content -->
     <div data-role="content" data-theme='e'>
       <p> Here are your plants: </p>
-      <div id="divPlantList"></div>
+      <div id="divPlantList">
+        <ul>
+          <li>Plant 1</li>
+          <li>Plant 2</li>
+          <li>Plant 3</li>
+        </ul>
+      </div>
       <input type="button" value="Sort by Plant Name" id="buttonSortpName" data-inline="true" />
     </div>
 
 
     <!--   page footer -->
     <div data-role="footer" data-theme='b'>
-      <h1>Copyright 2020</h1>
+      <h1>Copyright 2021</h1>
     </div>
   </div>
   </div>
   <!-- End of  page ------------------------------------------------------------------>
 
+
+
+  <div data-role="page" id="PlantInfo">
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>List Plants</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#AddPlants">Add Plants</a></li>
+          <li><a href="#FindPlants">Find Plants</a></li>
+          <li><a href="#ListPlants">List Plants</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
+    </div>
+    <!--   page content -->
+    <div data-role="content" data-theme='e'>
+      <p> Plant Info: </p>
+      <div id="divPlantInfo">
+        <ul>
+          <li>Name: x</li>
+          <li>Family: x</li>
+          <li>Scientific Name: x</li>
+          <li>Maintenance Level: x</li>
+          <li>Size: x</li>
+          <li>Color: x</li>
+        </ul>
+      </div>
+      <input type="button" value="Delete Plant from the List" id="delete-plant" data-inline="true" />
+    </div>
+
+
+    <!--   page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyright 2021</h1>
+    </div>
+  </div>
+  </div>
 
 
 </body>
