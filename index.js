@@ -1,25 +1,18 @@
 // start by creating data so we don't have to type it in each time
-let movieArray = [];
+let PlantArray = [];
 
 // define a constructor to create movie objects
-let MovieObject = function (pTitle, pYear, pGenre, pMan, pWoman, pURL) {
-    this.Title = pTitle;
-    this.Year = pYear;
-    this.ID = movieArray.length + 1;
-    this.Genre = pGenre;  // action  comedy  drama  horrow scifi  musical  western
-    this.Man = pMan;
-    this.Woman = pWoman;
+let PlantObject = function (pname, psciname, _family, pclimate, pcolor, pURL) {
+    this.name = pname;
+    this.sciname = psciname;
+    this.ID = PlantArray.length + 1;
+    this.pfamily = _family; 
+    this.climate = pclimate;
+    this.color = pcolor;
     this.URL = pURL;
 }
 
 
-movieArray.push(new MovieObject("Phylum Filicinophyta", "[Fern family]", ", Fern family, etc.", "Cher"));
-movieArray.push(new MovieObject("Phylum Cycadophyta", "[Cycads family]", ", Cycads family, etc.", "Laura VanDern", "https://www.youtube.com/watch?v=7uRJartX79Q"));
-movieArray.push(new MovieObject("Phylum Coniferophyta", "[Pines family]", ", Pines family, etc.", "Holly Hunter", "https://www.youtube.com/watch?v=NoXJKArYi1g"));
-movieArray.push(new MovieObject("Phylum Angiospermophyta (flowering plants)", "[Flowering family]", ", Flowering family, etc.", "Emily Tennant", "https://youtu.be/ZDPE-NronKk"));
-
-
-let selectedGenre = "not selected";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -28,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // add button events ************************************************************************
     
     document.getElementById("buttonAdd").addEventListener("click", function () {
-        movieArray.push(new MovieObject(document.getElementById("title").value, document.getElementById("year").value,
-            selectedGenre, document.getElementById("man").value, document.getElementById("woman").value));
+        PlantArray.push(new PlantObject(document.getElementById("pname").value, document.getElementById("sciname").value,
+        document.getElementById("pfamily").value, document.getElementById("climate").value, document.getElementById("pcolor").value));
         document.location.href = "index.html#ListAll";
         // also add the URL value
     });
@@ -50,13 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedGenre = $('#mlevel').val();
     });
 
-
-    document.getElementById("buttonSortpName").addEventListener("click", function () {
-        movieArray.sort(dynamicSort("pname"));
-        createList();
-        document.location.href = "index.html#ListAll";
-    });
-
   
 // end of add button events ************************************************************************
 
@@ -67,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $(document).on("pagebeforeshow", "#ListPlants", function (event) {   // have to use jQuery 
         createList();
     });
+
  
 // end of page before show code *************************************************************************
 
@@ -82,35 +69,20 @@ function createList() {
 
     var ul = document.createElement('ul');
 
-    movieArray.forEach(function (element,) {   // use handy array forEach method
+    PlantArray.forEach(function (element,) {   // use handy array forEach method
         var li = document.createElement('li');
-        li.innerHTML =  element.ID + ":  " + element.Title + "  " + element.Genre;
+        li.innerHTML = element.name + "  (" + element.pfamily + ")";
         ul.appendChild(li);
     });
     divPlantList.appendChild(ul)
 
 };
+
+function AddPlant()
+{
+    //code goes here but your tired so you'll come back at the last minute like a champion//
+}
   
 
-/**
- *  https://ourcodeworld.com/articles/read/764/how-to-sort-alphabetically-an-array-of-objects-by-key-in-javascript
-* Function to sort alphabetically an array of objects by some specific key.
-* 
-* @param {String} property Key of the object to sort.
-*/
-function dynamicSort(property) {
-    var sortOrder = 1;
 
-    if (property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
 
-    return function (a, b) {
-        if (sortOrder == -1) {
-            return b[property].localeCompare(a[property]);
-        } else {
-            return a[property].localeCompare(b[property]);
-        }
-    }
-}

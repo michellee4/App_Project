@@ -144,10 +144,14 @@
   
     <div data-role="content" data-theme='c'>
       <h3>Here are a few recommendations based off of the most popular </h3>
-      <p>[Color]</p>
-      <p>[Maintenace Level]</p>
-      <p>[Size]</p>
-      <p>[Plant Family]</p>
+      <div class="ui-field-contain">
+        <select name="popular" id="popular">
+          <option value="color">Color</option>
+          <option value="maintenance">Maintenance Level</option>
+          <option value="size">Size</option>
+          <option value="family">Plant Family</option>
+        </select>
+      </div>
       <h3>in your plant list: </h3>
       <p>[Plant A]: Info and purchase link</p>
       <p>[Plant B]: Info and purchase link</p>
@@ -194,7 +198,6 @@
     <div data-role="content" data-theme='e'>
       <p> Here are your plants: </p>
       <div id="divPlantList"></div>
-      <input type="button" value="Sort by Plant Name" id="buttonSortpName" data-inline="true" />
     </div>
 
 
