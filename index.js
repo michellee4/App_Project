@@ -13,7 +13,10 @@ let PlantObject = function(pname, psciname, _family, pclimate, pcolor, pURL) {
 }
 
 plantArray.push(new PlantObject("Eucalyptus", "Eucalyptus Globulus", "Myrtle family", "Green", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"))
-
+plantArray.push(new PlantObject("Aloe Vera", "Alpe Barbadensis Miller", "Asphodelaceae", "Green", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"))
+plantArray.push(new PlantObject("Christmas Cactus", "Schlumbergera Truncata", "Cactaceae", "Green/Pink", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"))
+plantArray.push(new PlantObject("Zebra Plant", "Aphelandra Squarrosa", "Acanthaceae", "Green", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"))
+plantArray.push(new PlantObject("Peace Lily", "Spathiphyllum", "Arums", "White/Green", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"))
 
 document.addEventListener("DOMContentLoaded", function() {
 
