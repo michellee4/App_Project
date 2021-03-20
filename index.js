@@ -291,3 +291,35 @@ function createList() {
     });
 
 };
+
+
+function deletePlant(which) {
+    console.log(which);
+    let arrayPointer = GetArrayPointer(which);
+    plantArray.splice(arrayPointer, 1);  // remove 1 element at index 
+}
+
+function GetArrayPointer(localID) {
+    for (let i = 0; i < plantArray.length; i++) {
+        if (localID === plantArray[i].ID) {
+            return i;
+        }
+    }
+}
+
+function dynamicSort(property) {
+    var sortOrder = 1;
+
+    if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+
+    return function (a, b) {
+        if (sortOrder == -1) {
+            return b[property].localeCompare(a[property]);
+        } else {
+            return a[property].localeCompare(b[property]);
+        }
+    }
+}
