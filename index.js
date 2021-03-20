@@ -1,4 +1,3 @@
-// start by creating data so we don't have to type it in each time
 let PlantArray = [];
 
 // define a constructor to create movie objects
@@ -24,10 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // add button events ************************************************************************
 
-    document.getElementById("buttonAdd").addEventListener("click", function() {
-        PlantArray.push(new PlantObject(document.getElementById("pname").value, document.getElementById("sciname").value,
-            document.getElementById("pfamily").value, document.getElementById("climate").value, document.getElementById("pcolor").value));
-        document.location.href = "index.html#ListAll";
+    document.getElementById("buttonAdd").addEventListener("click", function () {
+        PlantArray.push(new PlantObject(document.getElementById("pname").value, document.getElementById("sciname").value, document.getElementById("pfamily").value, document.getElementById("climate").value));
+        document.location.href = "index.html#ListPlants";
         // also add the URL value
     });
 
@@ -67,21 +65,37 @@ document.addEventListener("DOMContentLoaded", function() {
 function createList() {
     // clear prior data
     var divPlantList = document.getElementById("divPlantList");
-    while (divPlantList.firstChild) { // remove any old data so don't get duplicates
+    while (divPlantList.firstChild) {    // remove any old data so don't get duplicates
         divPlantList.removeChild(divPlantList.firstChild);
     };
 
     var ul = document.createElement('ul');
 
-    PlantArray.forEach(function(element, ) { // use handy array forEach method
+    Array.from(PlantArray).forEach(function (element,) {   // use handy array forEach method
         var li = document.createElement('li');
-        li.innerHTML = element.name + "  (" + element.pfamily + ")";
+        // adding a class name to each one as a way of creating a collection
+        li.classList.add('oneMovie'); 
+        // use the html5 "data-parm" to encode the ID of this particular data object
+        // that we are building an li from
+        li.setAttribute("data-parm", element.ID);
+        li.innerHTML = element.pname + element.pfamily;
         ul.appendChild(li);
     });
     divPlantList.appendChild(ul)
 
-};
+    // now we have the HTML done to display out list, 
+    // next we make them active buttons
+    // set up an event for each new li item, 
+    var liArray = document.getElementsByClassName("oneMovie");
+    Array.from(liArray).forEach(function (element) {
+        element.addEventListener('click', function () {
+        // get that data-parm we added for THIS particular li as we loop thru them
+        var parm = this.getAttribute("data-parm");  // passing in the record.Id
+        // get our hidden <p> and write THIS ID value there
+        document.getElementById("IDparmHere").innerHTML = parm;
+        // now jump to our page that will use that one item
+        document.location.href = "index.html#details";
+        });
+    });
 
-function AddPlant() {
-    //code goes here but your tired so you'll come back at the last minute like a champion//
-}
+};
