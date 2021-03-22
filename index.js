@@ -18,13 +18,7 @@ let PlantObject = function (pName, pScientific, pFamily, pClimate, pColor, pSize
     this.URL = pURL;
 }
 
-/*
-plantArray.push(new PlantObject("Eucalyptus", "Eucalyptus Globulus", "Myrtle family", "Warm", "Green", "Large", "Low", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"));
-plantArray.push(new PlantObject("Aloe Vera", "Alpe Barbadensis Miller", "Asphodelaceae", "Warm", "Green", "Medium", "Low", "https://www.gardeningknowhow.com/houseplants/aloe-vera/aloe-vera-plant-care.htm"));
-plantArray.push(new PlantObject("Christmas Cactus", "Schlumbergera Truncata", "Cactaceae", "Warm", "Green/Pink", "Medium", "Low", "https://www.gardeningknowhow.com/ornamental/cacti-succulents/christmas-cactus/advice-for-christmas-cactus-care.htm"));
-plantArray.push(new PlantObject("Zebra Plant", "Aphelandra Squarrosa", "Acanthaceae", "Warm", "Green", "Small", "Medium", "https://www.thespruce.com/grow-zebra-plants-inside-1902777"));
-plantArray.push(new PlantObject("Peace Lily", "Spathiphyllum", "Arums", "Warm", "White/Green", "Small", "Medium", "https://www.almanac.com/plant/peace-lilies"));
-*/
+
 
 
 Database.push(new PlantObject("Eucalyptus", "Eucalyptus Globulus", "Myrtle family", "Cool", "Green", "Large", "Medium", "https://www.thespruce.com/how-to-grow-and-use-eucalyptus-1762354"));
@@ -113,9 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             for (let j = 0; j < Database.length; j++)
             {
-                if (plantArray[i].pfamily == Database[j].pfamily)
+                if (plantArray[i].Family == Database[j].Family)
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].name + " (" + Database[j].pfamily + ")";
+                   document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Family + ")";
+                }
+                else
+                {
+                    document.getElementById("recommendations").innerHTML = "Sorry, looks like we dont have any plants belonging to that Family.";
                 }
             }
         }
@@ -125,59 +123,20 @@ document.addEventListener("DOMContentLoaded", function () {
     {
         document.getElementById("recommendations").innerHTML = "";
   
-        let counterL = 0;
-        let counterM = 0;
-        let counterH = 0;
-  
         for (let i = 0; i < plantArray.length; i++)
         {
-            if (plantArray[i].Maintenance == "Low")
-            {
-                counterL++;
-            }
-            else if (plantArray[i].Maintenance == "Medium")
-            {
-                counterM++;
-            }
-            else if (plantArray[i].Maintenance == "High")
-            {
-                counterH++;
-            }
-        }
-        if (counterL >= plantArray.Length/2)
-        {
             for (let j = 0; j < Database.length; j++)
             {
-                if (Database[j].Maintenance == "Low")
+                if (plantArray[i].Maintenance == Database[j].Maintenance)
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
-                }
-            }
-        }
-        else if (counterM >= plantArray.length/2)
-        {
-            for (let j = 0; j < Database.length; j++)
-            {
-                if (Database[j].Maintenance == "Medium")
-                {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
-                }
-            }
-        }
-        else if (counterH >= plantArray.length/2)
-        {
-            for (let j = 0; j < Database.length; j++)
-            {
-                if (Database[j].Maintenance == "High")
-                {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
+                   document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Maintenance + ")";
                 }
             }
         }
     });
   
    
-    document.getElementById("maintenanceSort").addEventListener("click", function()
+    document.getElementById("sizeSort").addEventListener("click", function()
     {
         document.getElementById("recommendations").innerHTML = "";
   
@@ -217,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 if (Database[j].Size == "X-Small")
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
+                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Size + ")";
                 }
             }
         }
@@ -227,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 if (Database[j].Size == "Small")
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
+                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Size + ")";
                 }
             }
         }
@@ -237,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 if (Database[j].Size == "Medium")
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
+                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Size + ")";
                 }
             }
         }
@@ -247,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 if (Database[j].Size == "Large")
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
+                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Size + ")";
                 }
             }
         }
@@ -257,9 +216,14 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 if (Database[j].Size == "X-Large")
                 {
-                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].Name + " (" + Database[j].Family + ")"
+                    document.getElementById("recommendations").innerHTML += "<li>" + Database[j].PlantName + " (" + Database[j].Size + ")";
                 }
             }
+        }
+        else
+        {
+            document.getElementById("recommendations").innerHTML = "Sorry, looks like we don't have any plants that size.";
+
         }
   
     });
@@ -305,6 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // next 2 functions could be combined into 1 with a little work
 // such as I could pass in a variable which said which divPlantList div it should draw
 // to, and if no value is passed in to subset too, I could just include all.
+
 
 function createList() {
     // clear prior data
